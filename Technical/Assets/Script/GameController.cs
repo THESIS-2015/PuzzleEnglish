@@ -59,7 +59,7 @@ public class GameController : MonoSingleton<GameController> {
     public void Respawn(char let)
     {
         //crosswordController.RepawnCharacter(currentWord.wordValue);
-        char letter = GetLetter();
+        //char letter = GetLetter();
         //crosswordController.CreateCharacter(letter, currentWord.wordValue);
         crosswordController.CreateCharacter(let, currentWord.wordValue);
         //crosswordController.CreateCharacter('n', currentWord.wordValue);
@@ -77,6 +77,19 @@ public class GameController : MonoSingleton<GameController> {
 
 	// Update is called once per frame
 	void Update () {
-	
+        if (crosswordController.characterKey.Count == currentWord.wordValue.Length)
+        {
+            crosswordController.characterKey.Clear();
+            Invoke("ChangeData", 0.5f);
+        }
 	}
+
+    public void ChangeData()
+    {
+        if (currentWordIndex < maxWordIndex)
+        {
+            currentWord = WordData.wordDataList[currentWordIndex++];
+            ChangeWord(currentWord);
+        }
+    }
 }

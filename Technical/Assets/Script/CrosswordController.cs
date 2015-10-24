@@ -128,7 +128,8 @@ public class CrosswordController : MonoBehaviour {
             crossWord.Move(crosswordList[index].transform.localPosition);
             crossWord.ZoomIn();
             //r
-
+            Debug.Log("A: " + characterKey.Count);
+            Debug.Log("B: " + word.Length);
             return true;
         }
         return false;
